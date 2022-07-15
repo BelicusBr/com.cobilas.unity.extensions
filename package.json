@@ -2,7 +2,7 @@
   "name": "com.cobilas.unity.extensions",
   "version": "1.0.0",
   "displayName": "Cobilas Extensions",
-  "description": "Pacote de extens\u00f5es para unity3d",
+  "description": "Pacote de extenscoes para unity3d",
   "unity": "2019.1",
   "unityRelease": "0b5",
   "type": "library",
