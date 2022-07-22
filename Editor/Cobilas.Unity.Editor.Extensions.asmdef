@@ -16,6 +16,12 @@
     "defineConstraints": [
         "UNITY_EDITOR"
     ],
-    "versionDefines": [],
+    "versionDefines": [
+        {
+            "name": "com.cobilas.cobilascore",
+            "expression": "1.0",
+            "define": "COBILAS_CORE"
+        }
+    ],
     "noEngineReferences": false
 }

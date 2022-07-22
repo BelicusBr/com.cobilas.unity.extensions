@@ -11,14 +11,6 @@
     "name": "Cobilas CTB"
   },
   
-  "gitDependencies": {
-    "com.cobilas.cobilascore": {
-		"type" : "github",
-		"version" : "1.0.0",
-		"userName" : "BelicusBr"
-	}
-  },
-  
   "repository": {
     "url" : "https://github.com/BelicusBr/com.cobilas.unity.extensions.git",
     "type" : "git"

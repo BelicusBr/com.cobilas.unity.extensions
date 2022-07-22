@@ -12,9 +12,9 @@
     "defineConstraints": [],
     "versionDefines": [
         {
-            "name": "com.unity.ugui",
+            "name": "com.cobilas.cobilascore",
             "expression": "1.0",
-            "define": "UNITY_UI_ACTIVATED"
+            "define": "COBILAS_CORE"
         }
     ],
     "noEngineReferences": false
