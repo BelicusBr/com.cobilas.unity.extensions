@@ -1,4 +1,8 @@
 # Changelog
+## [1.0.12] 01/08/2022
+- Fix CHANGELOG.md
+- Fix package.json
+- Change SerializedPropertyExtension.cs
 ## [1.0.11] 31/07/2022
 - Fix CHANGELOG.md
 - Fix package.json

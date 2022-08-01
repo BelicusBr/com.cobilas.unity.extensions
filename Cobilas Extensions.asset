@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Cobilas Extensions
   m_EditorClassIdentifier: 
   _URL: https://github.com/BelicusBr/com.cobilas.unity.extensions.git
-  branch: 1.0.11
+  branch: 1.0.12
   repos:
   - start: 1
     _URL: https://github.com/BelicusBr/com.cobilas.cobilascore.git
