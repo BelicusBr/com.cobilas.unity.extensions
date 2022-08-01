@@ -1,6 +1,6 @@
 {
   "name": "com.cobilas.unity.extensions",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "displayName": "Cobilas Extensions",
   "description": "Pacote de extenscoes para unity3d",
   "licensesUrl": "https://github.com/BelicusBr/com.cobilas.unity.extensions/blob/main/LICENSE.md",
@@ -19,6 +19,6 @@
   },
   
   "relatedPackages": {
-    "com.cobilas.unity.extensions": "1.0.10"
+    "com.cobilas.unity.extensions": "1.0.11"
   }
 }
