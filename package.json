@@ -19,7 +19,7 @@
   },
   
   "publishConfig": {
-    "registry":"https://npm.pkg.github.com/@BelicusBr"
+    "registry":"https://www.npmjs.com/@belicusbr"
   },
   
   "relatedPackages": {
