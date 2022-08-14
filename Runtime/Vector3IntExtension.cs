@@ -47,50 +47,5 @@ namespace UnityEngine {
         /// <summary>Soma todos os eixos.</summary>
         public static float Summation(this Vector3Int v)
             => v.x + v.y + v.z;
-
-        #region Old code
-        [Obsolete("Use Vector3Int.ABS(bool, bool, bool)")]
-        public static Vector3Int ABSVector3Int(this Vector3Int V, bool x = true, bool y = true, bool z = true)
-            => ABS(V, x, y, z);
-        [Obsolete("Use Vector3Int.ABSX()")]
-        public static Vector3Int ABSVector3IntX(this Vector3Int V)
-            => ABSX(V);
-        [Obsolete("Use Vector3Int.ABSY()")]
-        public static Vector3Int ABSVector3IntY(this Vector3Int V)
-            => ABSY(V);
-        [Obsolete("Use Vector3Int.ABSZ()")]
-        public static Vector3Int ABSVector3IntZ(this Vector3Int V)
-            => ABSZ(V);
-        [Obsolete("Use Vector3Int.Invert(bool, bool, bool)")]
-        public static Vector3Int InvertVector3Int(this Vector3Int V, bool x = true, bool y = true, bool z = true)
-            => Invert(V, x, y, z);
-        [Obsolete("Use Vector3Int.InvertX()")]
-        public static Vector3Int InvertVector3IntX(this Vector3Int V)
-            => InvertX(V);
-        [Obsolete("Use Vector3Int.InvertY()")]
-        public static Vector3Int InvertVector3IntY(this Vector3Int V)
-            => InvertY(V);
-        [Obsolete("Use Vector3Int.InvertZ()")]
-        public static Vector3Int InvertVector3IntZ(this Vector3Int V)
-            => InvertZ(V);
-        [Obsolete("Use Vector3Int.Division()")]
-        public static Vector3Int Divisor(this Vector3Int V, Vector3Int B)
-            => Division(V, B);
-        [Obsolete("Use Vector3Int.Multiplication()")]
-        public static Vector3Int Multiplicador(this Vector3Int V, Vector3Int B)
-            => Multiplication(V, B);
-        [Obsolete]
-        public static Vector3 ParaVector3(this Vector3Int V)
-            => V;
-        [Obsolete]
-        public static Vector3Int RemoveNaN(this Vector3Int V)
-            => new Vector3Int(
-                (V.x.ToString() == "NaN") ? 0 : V.x,
-                (V.y.ToString() == "NaN") ? 0 : V.y,
-                (V.z.ToString() == "NaN") ? 0 : V.z);
-        [Obsolete("Use Vector3Int.Summation()")]
-        public static float SomaDeTodosOsEixos(this Vector3Int V)
-            => V.x + V.y + V.z;
-        #endregion
     }
 }
