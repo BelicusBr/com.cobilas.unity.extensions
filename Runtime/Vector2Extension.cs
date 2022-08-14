@@ -44,49 +44,5 @@ namespace UnityEngine {
         /// <summary>Soma todos os eixos.</summary>
         public static float Summation(this Vector2 v)
             => v.x + v.y;
-        #region Old code
-        [Obsolete("Use Vector2.ABS(bool, bool)")]
-        public static Vector2 ABSVector2(this Vector2 V, bool x = true, bool y = true)
-            => ABS(V, x, y);
-        [Obsolete("Use Vector2.ABSX()")]
-        public static Vector2 ABSVector2X(this Vector2 V)
-            => ABSX(V);
-        [Obsolete("Use Vector2.ABSY()")]
-        public static Vector2 ABSVector2Y(this Vector2 V)
-            => ABSY(V);
-        [Obsolete("Use Vector2.Invert(bool, bool)")]
-        public static Vector2 InvertVector2(this Vector2 V, bool x = true, bool y = true)
-            => Invert(V, x, y);
-        [Obsolete("Use Vector2.InvertX()")]
-        public static Vector2 InvertVector2X(this Vector2 V)
-            => InvertX(V);
-        [Obsolete("Use Vector2.InvertY()")]
-        public static Vector2 InvertVector2Y(this Vector2 V)
-            => InvertY(V);
-        [Obsolete("Use Vector2.Division(Vector2)")]
-        public static Vector2 Divisor(this Vector2 V, Vector2 B)
-            => Division(V, B);
-        [Obsolete("Use Vector2.Division(float, float)")]
-        public static Vector2 Divisor(this Vector2 V, float x, float y)
-            => Division(V, x, y);
-        [Obsolete("Use Vector2.Multiplication(float, float)")]
-        public static Vector2 Multiplicador(this Vector2 V, Vector2 B)
-            => Multiplication(V, B);
-        [Obsolete("Use Vector2.Multiplication(float, float)")]
-        public static Vector2 Multiplicador(this Vector2 V, float x, float y)
-            => Multiplication(V, x, y);
-        [Obsolete("Use Vector2.ToVector2Int()")]
-        public static Vector2Int ParaVector3Int(this Vector2 V)
-            => new Vector2Int((int)V.x, (int)V.y);
-        [Obsolete("Use Vector2.Summation()")]
-        public static float SomaDeTodosOsEixos(this Vector2 V)
-            => Summation(V);
-        [Obsolete]
-        public static Vector2 RemoverElevadosAPotencia(this Vector2 V)
-            => new Vector2(
-                V.x.ToString().ToLower().Contains("e") ? 0 : V.x,
-                V.y.ToString().ToLower().Contains("e") ? 0 : V.y
-                );
-        #endregion
     }
 }
