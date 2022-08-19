@@ -18,11 +18,9 @@ namespace UnityEditor {
             => (T)GetValue(P);
 
         public static void SetValue(this SerializedProperty P, object value) {
-            P.serializedObject.Update();
             KeyValuePair<FieldInfo, object> Res;
             GetFieldInfo(P, out Res);
             Res.Key.SetValue(Res.Value, value);
-            P.serializedObject.ApplyModifiedProperties();
         }
 
         private static KeyValuePair<FieldInfo, object> GetFieldInfoObjectRef(string propertyPath, object target) {
