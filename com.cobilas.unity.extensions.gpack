@@ -1,9 +1,10 @@
 {
     "name": "com.cobilas.unity.extensions",
-    "version": "1.0.13",
+    "version": "1.0.14",
     "repository": "https://github.com/BelicusBr/com.cobilas.unity.extensions.git",
     "relatedPackages": [
-        "1.0.13"
+        "1.0.13",
+		"1.0.14"
     ],
     "gitDependencies": [
         {
