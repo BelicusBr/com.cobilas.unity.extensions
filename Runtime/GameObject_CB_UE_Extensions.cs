@@ -4,21 +4,21 @@ using Cobilas.Collections;
 namespace UnityEngine {
     public static class GameObject_CB_UE_Extensions {
         public static void Destroy(this GameObject V) 
-            => MonoBehaviour.Destroy(V);
+            => Object.Destroy(V);
 
         public static void Destroy<T>(this GameObject V) where T : Object
-            => MonoBehaviour.Destroy(V.GetComponent<T>());
+            => Object.Destroy(V.GetComponent<T>());
 
         public static void Destroy(this GameObject V, params Object[] objects) {
             for (int I = 0; I < objects.Length; I++) 
-                MonoBehaviour.Destroy(objects[I]);
+                Object.Destroy(objects[I]);
         }
 
         public static void DestroyImmediate(this GameObject V) 
-            => MonoBehaviour.DestroyImmediate(V);
+            => Object.DestroyImmediate(V);
 
         public static void DestroyImmediate<T>(this GameObject V) where T : Object
-            => MonoBehaviour.DestroyImmediate(V.GetComponent<T>());
+            => Object.DestroyImmediate(V.GetComponent<T>());
         //==========================GetPosition====================================================
         public static Vector3 GetPosition(this GameObject V)
             => V.transform.position;

@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace UnityEngine {
-    public static class Vector2IntExtension {
+    public static class Vector2Int_CB_UE_Extension {
         public static Vector2Int ABS(this Vector2Int v, bool absX = true, bool absY = true)
             => new Vector2Int(absX ? Mathf.Abs(v.x) : v.x, absY ? Mathf.Abs(v.y) : v.y);
 

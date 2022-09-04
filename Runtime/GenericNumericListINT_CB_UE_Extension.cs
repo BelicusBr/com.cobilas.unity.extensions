@@ -1,5 +1,5 @@
 ﻿namespace System.Collections.Generic {
-    public static class GenericNumericListINTExtension {
+    public static class GenericNumericListINT_CB_UE_Extension {
 
         public static void Reorder(this List<int> li) {
             List<int> liTemp = I_Reorder<int>(li, (I, J) => I < J);

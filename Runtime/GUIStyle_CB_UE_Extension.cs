@@ -1,5 +1,5 @@
 ﻿namespace UnityEngine {
-    public static class GUIStyleExtension {
+    public static class GUIStyle_CB_UE_Extension {
 
         public static void DrawRepaint(this GUIStyle G, Rect position, GUIContent content, int ID) {
             if (Event.current.type == EventType.Repaint)

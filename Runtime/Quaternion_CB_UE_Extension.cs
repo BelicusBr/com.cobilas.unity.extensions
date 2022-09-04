@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace UnityEngine {
-    public static class QuaternionExtension {
+    public static class Quaternion_CB_UE_Extension {
         /// <summary>Gera uma direção com base num <seealso cref="Vector3"/>.</summary>
         /// <param name="dir">direção.</param>
         public static Vector3 GenerateDirection(this Quaternion q, Vector3 dir)

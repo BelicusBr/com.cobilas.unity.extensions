@@ -1,194 +1,194 @@
-﻿using Cobilas.Collections;
+﻿using System;
+using Cobilas.Collections;
 
 namespace UnityEngine {
     public static class Component_CB_UE_Extensions {
 
-        /// <summary>Buscar um transfome filho.</summary>
-        /// <param name="indice">Indice do filho.</param>
-        /// <returns>O filho a ser retornado.</returns>
-        public static Transform BuscarFilho(this Component V, int indice)
-            => V.transform.GetChild(indice);
+        public static int PickUpChildCount(this Component m)
+            => m.transform.childCount;
+        #region PickUpChild
+        public static Transform PickUpChild(this Component m, int index)
+            => m.transform.GetChild(index);
 
-        /// <summary>Busca parent usando um componente como alvo</summary>
-        /// <typeparam name="T">Componente alvo</typeparam>
-        /// <returns></returns>
-        public static T BuscarParentApartirDe<T>(this Component V) where T : Object {
-            Transform Parent = V.transform.parent;
-            while (true) {
-                if (Parent == null) break;
-                if (Parent.GetComponent<T>() != null) break; 
-                else if (Parent.GetComponent<T>() == null) { Parent = Parent.parent; }
-            }
-            if (Parent == null) return (T)null;
-            return Parent.GetComponent<T>();
+        public static Component PickUpChild(this Component m, Type componet, int index) {
+            Transform res = PickUpChild(m, index);
+            return res != (Component)null ? res.GetComponent(componet) : (Component)null;
         }
 
-        /// <summary>Busca parents usando um componente como alvo</summary>
-        /// <typeparam name="T">Componente alvo</typeparam>
-        /// <returns></returns>
-        public static T[] BuscarParentsApartirDe<T>(this Component V) where T : Object {
-            Transform Parent = V.transform.parent;
-            T[] Parents = null;
-            while (true) {
-                if (Parent == null) break;
-                T VLTemp = Parent.GetComponent<T>();
-                if (VLTemp != null) { 
-                    Parent = Parent.parent; 
-                    ArrayManipulation.Add<T>(VLTemp, ref Parents);
+        public static TypeComponent PickUpChild<TypeComponent>(this Component m, int index) where TypeComponent : Object
+            => PickUpChild(m, typeof(TypeComponent), index) as TypeComponent;
+
+        public static Transform PickUpChild(this Component m, string name) {
+            for (int I = 0; I < PickUpChildCount(m); I++) {
+                Transform temp = PickUpChild(m, I);
+                if (temp.name == name)
+                    return temp;
+            }
+            return (Transform)null;
+        }
+
+        public static Component PickUpChild(this Component m, Type componet, string name) {
+            Transform res = PickUpChild(m, name);
+            return res != (Component)null ? res.GetComponent(componet) : (Component)null;
+        }
+
+        public static TypeComponent PickUpChild<TypeComponent>(this Component m, string name) where TypeComponent : Object
+            => PickUpChild(m, typeof(TypeComponent), name) as TypeComponent;
+
+        public static Component PickUpChild(this Component m, Type componet) {
+            for (int I = 0; I < PickUpChildCount(m); I++) {
+                Component res = PickUpChild(m, I).GetComponent(componet);
+                if (res != null)
+                    return res;
+            }
+            return (Component)null;
+        }
+
+        public static TypeComponent PickUpChild<TypeComponent>(this Component m) where TypeComponent : Object {
+            for (int I = 0; I < PickUpChildCount(m); I++) {
+                TypeComponent res = PickUpChild(m, I).GetComponent<TypeComponent>();
+                if (res != null)
+                    return res;
+            }
+            return (TypeComponent)null;
+        }
+        #endregion
+        #region GetChildren
+        public static Transform[] GetChildren(this Component m)
+            => GetChildren(m, true);
+
+        public static Component[] GetChildren(this Component m, Type component)
+            => GetChildren(m, component, true);
+
+        public static TypeComponent[] GetChildren<TypeComponent>(this Component m) where TypeComponent : Object
+            => GetChildren<TypeComponent>(m, true);
+
+        public static Transform[] GetChildren(this Component m, bool getChildDisabled) {
+            Transform[] res = new Transform[0];
+            for (int I = 0; I < res.Length; I++) {
+                Transform temp = PickUpChild(m, I);
+                if (temp.gameObject.activeSelf || getChildDisabled)
+                    ArrayManipulation.Add(temp, ref res);
+            }
+            return res;
+        }
+
+        public static Component[] GetChildren(this Component m, Type component, bool getChildDisabled) {
+            Component[] res = new Component[0];
+            foreach (var item in GetChildren(m, getChildDisabled)) {
+                Component temp = item.GetComponent(component);
+                if (temp != (Component)null)
+                    ArrayManipulation.Add(temp, ref res);
+            }
+            return res;
+        }
+
+        public static TypeComponent[] GetChildren<TypeComponent>(this Component m, bool getChildDisabled) where TypeComponent : Object {
+            TypeComponent[] res = new TypeComponent[0];
+            foreach (var item in GetChildren(m, getChildDisabled)) {
+                TypeComponent temp = item.GetComponent<TypeComponent>();
+                if (temp != (TypeComponent)null)
+                    ArrayManipulation.Add(temp, ref res);
+            }
+            return res;
+        }
+        #endregion
+        #region GetAllChildren
+        public static Transform[] GetAllChildren(this Component m)
+            => GetAllChildren(m, false);
+
+        public static Component[] GetAllChildren(this Component m, Type component)
+            => GetAllChildren(m, component, true);
+
+        public static TypeComponent[] GetAllChildren<TypeComponent>(this Component m) where TypeComponent : Object
+            => GetAllChildren<TypeComponent>(m, true);
+
+        public static Transform[] GetAllChildren(this Component m, bool getChildDisabled)
+            => GetAllChildren(m.transform, getChildDisabled);
+
+        public static Component[] GetAllChildren(this Component m, Type component, bool getChildDisabled) {
+            Component[] res = new Component[0];
+            foreach (var item in GetAllChildren(m, getChildDisabled)) {
+                Component temp = item.GetComponent(component);
+                if (temp != (Component)null)
+                    ArrayManipulation.Add(temp, ref res);
+            }
+            return res;
+        }
+
+        public static TypeComponent[] GetAllChildren<TypeComponent>(this Component m, bool getChildDisabled) where TypeComponent : Object {
+            TypeComponent[] res = new TypeComponent[0];
+            foreach (var item in GetAllChildren(m, getChildDisabled)) {
+                TypeComponent temp = item.GetComponent<TypeComponent>();
+                if (temp != (Component)null)
+                    ArrayManipulation.Add(temp, ref res);
+            }
+            return res;
+        }
+        #endregion
+        #region GetChildOrGrandchild
+        public static Transform GetChildOrGrandchild(this Component m, string name) {
+            foreach (var item in GetAllChildren(m, true))
+                if (item.name == name)
+                    return item;
+            return (Transform)null;
+        }
+
+        public static Component GetChildOrGrandchild(this Component m, Type component, string name) {
+            Transform res = GetChildOrGrandchild(m, name);
+            return res != (Transform)null ? res.GetComponent(component) : (Component)null;
+        }
+
+        public static TypeComponent GetChildOrGrandchild<TypeComponent>(this Component m, string name) where TypeComponent : Object {
+            Transform res = GetChildOrGrandchild(m, name);
+            return res != (Transform)null ? res.GetComponent<TypeComponent>() : (TypeComponent)null;
+        }
+        #endregion
+        #region RootParent
+        public static Transform RootParent(this Component c) {
+            Transform res = RootParent(c.transform);
+            return res == c.transform ? (Transform)null : res;
+        }
+
+        public static Component RootParent(this Component c, Type componet) {
+            Transform transform = RootParent(c);
+            return transform != null ? transform.GetComponent(componet) : (Component)null;
+        }
+
+        public static TypeComponent RootParent<TypeComponent>(this Component c) where TypeComponent : Object {
+            Transform transform = RootParent(c);
+            return transform != null ? transform.GetComponent<TypeComponent>() : (TypeComponent)null;
+        }
+        #endregion
+        public static bool ChildExists(this Component m, string name) {
+            for (int I = 0; I < PickUpChildCount(m); I++)
+                if (PickUpChild(m, I).name == name)
+                    return true;
+            return false;
+        }
+        public static bool ChildOrGrandchildExists(this Component m, string name) {
+            foreach (var item in GetAllChildren(m, true))
+                if (item.name == name)
+                    return true;
+            return false;
+        }
+
+        private static Transform RootParent(Transform transform) {
+            if (transform.parent != null)
+                return RootParent(transform.parent);
+            return transform;
+        }
+
+        private static Transform[] GetAllChildren(Transform transform, bool getChildDisabled) {
+            Transform[] res = new Transform[0];
+            for (int I = 0; I < transform.childCount; I++) {
+                Transform temp = transform.GetChild(I);
+                if (temp.gameObject.activeSelf || getChildDisabled) {
+                    ArrayManipulation.Add(temp, ref res);
+                    ArrayManipulation.Add(GetAllChildren(temp, getChildDisabled), ref res);
                 }
-                else if (VLTemp == null) { Parent = Parent.parent; }
             }
-            return Parents;
+            return res;
         }
-
-        /// <summary>Buscar um transfome filho.</summary>
-        /// <param name="NomeFilho">O nome do filho.</param>
-        /// <returns>O filho a ser retornado.</returns>
-        public static Transform BuscarFilho(this Component V, string NomeFilho) {
-            int Indice = V.transform.childCount;
-            for (int I = 0; I < Indice; I++) {
-                Transform TF = BuscarFilho(V, I);
-                if (TF.name == NomeFilho)
-                    return TF;
-            }
-            return null;
-        }
-
-        /// <summary>Buscar o primeiro transfome filho que encontrar.</summary>
-        /// <typeparam name="T">O tipo do componente do filho.</typeparam>
-        /// <returns>O filho a ser retornado.</returns>
-        public static T BuscarFilho<T>(this Component V) where T : Object {
-            T[] Temp = V.BuscarFilhos<T>();
-            return (Temp == null) ? null : Temp[0];
-        }
-
-        /// <summary>Buscar um transfome filho usando indice.</summary>
-        /// <typeparam name="T">O tipo do componente do filho.</typeparam>
-        /// <param name="indice">Indice do filho.</param>
-        /// <returns>O filho a ser retornado.</returns>
-        public static T BuscarFilho<T>(this Component V, int indice) where T : Object
-            => V.BuscarFilho(indice).GetComponent<T>();
-
-        /// <summary>Buscar um transfome filho usando nome.</summary>
-        /// <typeparam name="T">O tipo do componente do filho.</typeparam>
-        /// <param name="NomeFilho">O nome do filho.</param>
-        /// <returns>O filho a ser retornado.</returns>
-        public static T BuscarFilho<T>(this Component V, string NomeFilho) where T : Object 
-            => V.BuscarFilho(NomeFilho).GetComponent<T>();
-        
-
-        /// <summary>Buscar todos os transforms filhos.</summary>
-        /// <returns>Os filhos a serem retornados.</returns>
-        public static Transform[] BuscarFilhos(this Component V, bool BuscarFilhosDesativados = true) {
-            int Indice = V.transform.childCount;
-            Transform[] TF = null;
-            if (Indice > 0) {
-                for (int I = 0; I < Indice; I++) {
-                    Transform STF = V.transform.BuscarFilho(I);
-                    if (BuscarFilhosDesativados)
-                        ArrayManipulation.Add<Transform>(STF, ref TF);
-                    else {
-                        if(STF.gameObject.activeInHierarchy)
-                            ArrayManipulation.Add<Transform>(STF, ref TF);
-                    }
-                }
-            }
-
-            return TF;
-        }
-
-        /// <summary>Buscar todos os transforms filhos.</summary>
-        /// <typeparam name="T">O tipo do componente do filho.</typeparam>
-        /// <returns>Os filhos a serem retornados.</returns>
-        public static T[] BuscarFilhos<T>(this Component V, bool BuscarFilhosDesativados = true) where T : Object {
-            T[] Res = null;
-            Transform[] TFMs = BuscarFilhos(V, BuscarFilhosDesativados);
-            for (int I = 0; I < ArrayManipulation.ArrayLength(TFMs); I++)
-                if (TFMs[I].GetComponent<T>())
-                    ArrayManipulation.Add<T>(TFMs[I].GetComponent<T>(), ref Res);
-            return Res;
-        }
-
-        /// <summary>Buscar o transform filho ou neto.</summary>
-        /// <param name="Nome">O nome do filho ou neto.</param>
-        /// <returns>O filho ou neto a ser retornado.</returns>
-        public static Transform BuscarFilhoOuNeto(this Component V, string Nome) {
-            Transform[] TF = V.BuscarFilhos();
-            Transform Res = null;
-            for (int I = 0; I < ArrayManipulation.ArrayLength(TF); I++) {
-                if (TF[I].name == Nome) { Res = TF[I]; break; }
-                else Res = BuscarFilhoOuNeto(TF[I], Nome);
-            }
-            //Transform[] TF2 = null;
-            //if (TF != null)
-            //    while (true) {
-            //        for (int I = 0; I < TF.Length; I++) {
-            //            if (TF[I].name == Nome) return TF[I];
-            //            else if (TF[I].childCount > 0) AddMatriz(TF[I].BuscarFilhos(), ref TF2);
-            //        }
-            //        if (TF2 == null) break;
-            //        else {
-            //            TF = TF2;
-            //            TF2 = null;
-            //        }
-            //    }
-
-            return Res;
-        }
-
-        /// <summary>Buscar o transform filho ou neto.</summary>
-        /// <typeparam name="T">O tipo do componente do filho ou neto.</typeparam>
-        /// <param name="Nome">O nome do filho ou neto.</param>
-        /// <returns>O filho ou neto a ser retornado.</returns>
-        public static T BuscarFilhoOuNeto<T>(this Component V, string Nome) where T : Object
-            => BuscarFilhoOuNeto(V, Nome).GetComponent<T>();
-
-        public static Transform[] BuscarFilhosENetos(this Component V, bool BuscarFilhosDesativados = true) {
-            Transform[] Res = BuscarFilhos(V, BuscarFilhosDesativados);
-            for (int I = 0; I < ArrayManipulation.ArrayLength(Res); I++)
-                ArrayManipulation.Add<Transform>(BuscarFilhosENetos(Res[I], BuscarFilhosDesativados), ref Res);
-            //Transform[] ResTemp = null;
-            //AddMatriz(V.transform, ref ResTemp);
-            //if (V.transform.childCount > 0) {
-            //    while (true) {
-            //        Transform[] Temp = null;
-            //        for (int I = 0; I < ResTemp.Length; I++) {
-            //            if (ResTemp[I].childCount > 0) {
-            //                AddMatriz(ResTemp[I].BuscarFilhos(BuscarFilhosDesativados), ref Res);
-            //                AddMatriz(ResTemp[I].BuscarFilhos(BuscarFilhosDesativados), ref Temp);
-            //            }
-            //        }
-            //        ResTemp = Temp;
-            //        if (ResTemp == null) break;
-            //    }
-            //}
-            return Res;
-        }
-
-        public static T[] BuscarFilhosENetos<T>(this Component V, bool BuscarFilhosDesativados = true) where T : Object {
-            T[] Res = null;
-            Transform[] TF = BuscarFilhosENetos(V, BuscarFilhosDesativados);
-            for (int I = 0; I < ArrayManipulation.ArrayLength(TF); I++)
-                ArrayManipulation.Add<T>(TF[I].GetComponent<T>(), ref Res);
-            return Res;
-        }
-
-        public static Transform BuscarNetoApartirDe(this Component V, string ApartirDe, string Nome) 
-            => BuscarFilhoOuNeto(V, ApartirDe).BuscarFilhoOuNeto(Nome);
-
-        public static T BuscarNetoApartirDe<T>(this Component V, string ApartirDe, string Nome) where T : Transform
-            => BuscarNetoApartirDe(V, ApartirDe, Nome).GetComponent<T>();
-
-        public static bool FilhoExiste(this Component V, string nome)
-            => BuscarFilhoOuNeto(V, nome) != null;
-
-        //public static Transform BuscarObjetoRaiz(this Component V, string Nome) 
-        //    => CobilasBehaviour.BuscarGameObjectRaiz<Transform>(Nome);
-
-        public static Vector3 AplicaDirecaoDoTransform(this Component V, Vector3 vector)
-            => V.transform.right * vector.x + V.transform.up * vector.y + V.transform.forward * vector.z;
-
-        //===========================Metodos de retoação========================================
-        //public static Transform R_BuscarPorNome(Component V, string nome) { }
     }
 }
