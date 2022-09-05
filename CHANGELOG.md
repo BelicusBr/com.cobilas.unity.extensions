@@ -1,4 +1,6 @@
 # Changelog
+## [1.0.16] 04/09/2022
+- Add : MonoBehaviour_CB_UE_Extension.cs
 ## [1.0.12] 01/08/2022
 - Fix CHANGELOG.md
 - Fix package.json
