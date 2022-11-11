@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace UnityEngine {
+﻿namespace UnityEngine {
     public static class Vector3_CB_UE_Extension {
         public static Vector3 ABS(this Vector3 v, bool absX = true, bool absY = true, bool absZ = true)
             => new Vector3(
@@ -62,5 +60,12 @@ namespace UnityEngine {
         /// <summary>Soma todos os eixos.</summary>
         public static float Summation(this Vector3 v)
             => v.x + v.y + v.z;
+
+        public static Vector3 Clamp(this Vector3 v, float min, float max)
+            => new Vector3(
+                Mathf.Clamp(v.x, min, max),
+                Mathf.Clamp(v.y, min, max),
+                Mathf.Clamp(v.z, min, max)
+            );
     }
 }

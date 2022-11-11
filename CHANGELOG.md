@@ -1,4 +1,12 @@
 # Changelog
+## [1.0.17] 11/11/2022
+### Add método clamp
+O método `Clamp` foi adicionado nas classes
+- Vector2_CB_UE_Extension
+- Vector3_CB_UE_Extension
+- Vector2Int_CB_UE_Extension
+- Vector3Int_CB_UE_Extension
+- Vector4_CB_UE_Extension
 ## [1.0.16] 04/09/2022
 - Add : MonoBehaviour_CB_UE_Extension.cs
 ## [1.0.12] 01/08/2022

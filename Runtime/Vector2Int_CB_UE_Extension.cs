@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace UnityEngine {
+﻿namespace UnityEngine {
     public static class Vector2Int_CB_UE_Extension {
         public static Vector2Int ABS(this Vector2Int v, bool absX = true, bool absY = true)
             => new Vector2Int(absX ? Mathf.Abs(v.x) : v.x, absY ? Mathf.Abs(v.y) : v.y);
@@ -35,5 +33,11 @@ namespace UnityEngine {
         /// <summary>Soma todos os eixos.</summary>
         public static int Summation(this Vector2Int v)
             => v.x + v.y;
+
+        public static Vector2Int Clamp(this Vector2Int v, int min, int max)
+            => new Vector2Int(
+                Mathf.Clamp(v.x, min, max),
+                Mathf.Clamp(v.y, min, max)
+            );
     }
 }
