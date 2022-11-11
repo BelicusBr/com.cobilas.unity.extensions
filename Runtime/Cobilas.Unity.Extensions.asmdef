@@ -1,13 +1,13 @@
 {
     "name": "Cobilas.Unity.Extensions",
-    "references": [],
+    "references": [
+        "Cobilas.Core"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": true,
-    "precompiledReferences": [
-        "Cobilas.Collections.dll"
-    ],
+    "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
     "versionDefines": [
