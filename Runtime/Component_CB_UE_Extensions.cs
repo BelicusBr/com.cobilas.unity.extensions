@@ -15,7 +15,7 @@ namespace UnityEngine {
             return res != (Component)null ? res.GetComponent(componet) : (Component)null;
         }
 
-        public static TypeComponent PickUpChild<TypeComponent>(this Component m, int index) where TypeComponent : Object
+        public static TypeComponent PickUpChild<TypeComponent>(this Component m, int index) where TypeComponent : Component
             => PickUpChild(m, typeof(TypeComponent), index) as TypeComponent;
 
         public static Transform PickUpChild(this Component m, string name) {
@@ -32,7 +32,7 @@ namespace UnityEngine {
             return res != (Component)null ? res.GetComponent(componet) : (Component)null;
         }
 
-        public static TypeComponent PickUpChild<TypeComponent>(this Component m, string name) where TypeComponent : Object
+        public static TypeComponent PickUpChild<TypeComponent>(this Component m, string name) where TypeComponent : Component
             => PickUpChild(m, typeof(TypeComponent), name) as TypeComponent;
 
         public static Component PickUpChild(this Component m, Type componet) {
@@ -44,7 +44,7 @@ namespace UnityEngine {
             return (Component)null;
         }
 
-        public static TypeComponent PickUpChild<TypeComponent>(this Component m) where TypeComponent : Object {
+        public static TypeComponent PickUpChild<TypeComponent>(this Component m) where TypeComponent : Component {
             for (int I = 0; I < PickUpChildCount(m); I++) {
                 TypeComponent res = PickUpChild(m, I).GetComponent<TypeComponent>();
                 if (res != null)
@@ -60,7 +60,7 @@ namespace UnityEngine {
         public static Component[] GetChildren(this Component m, Type component)
             => GetChildren(m, component, true);
 
-        public static TypeComponent[] GetChildren<TypeComponent>(this Component m) where TypeComponent : Object
+        public static TypeComponent[] GetChildren<TypeComponent>(this Component m) where TypeComponent : Component
             => GetChildren<TypeComponent>(m, true);
 
         public static Transform[] GetChildren(this Component m, bool getChildDisabled) {
@@ -83,7 +83,7 @@ namespace UnityEngine {
             return res;
         }
 
-        public static TypeComponent[] GetChildren<TypeComponent>(this Component m, bool getChildDisabled) where TypeComponent : Object {
+        public static TypeComponent[] GetChildren<TypeComponent>(this Component m, bool getChildDisabled) where TypeComponent : Component {
             TypeComponent[] res = new TypeComponent[0];
             foreach (var item in GetChildren(m, getChildDisabled)) {
                 TypeComponent temp = item.GetComponent<TypeComponent>();
@@ -100,7 +100,7 @@ namespace UnityEngine {
         public static Component[] GetAllChildren(this Component m, Type component)
             => GetAllChildren(m, component, true);
 
-        public static TypeComponent[] GetAllChildren<TypeComponent>(this Component m) where TypeComponent : Object
+        public static TypeComponent[] GetAllChildren<TypeComponent>(this Component m) where TypeComponent : Component
             => GetAllChildren<TypeComponent>(m, true);
 
         public static Transform[] GetAllChildren(this Component m, bool getChildDisabled)
@@ -116,7 +116,7 @@ namespace UnityEngine {
             return res;
         }
 
-        public static TypeComponent[] GetAllChildren<TypeComponent>(this Component m, bool getChildDisabled) where TypeComponent : Object {
+        public static TypeComponent[] GetAllChildren<TypeComponent>(this Component m, bool getChildDisabled) where TypeComponent : Component {
             TypeComponent[] res = new TypeComponent[0];
             foreach (var item in GetAllChildren(m, getChildDisabled)) {
                 TypeComponent temp = item.GetComponent<TypeComponent>();
@@ -139,7 +139,7 @@ namespace UnityEngine {
             return res != (Transform)null ? res.GetComponent(component) : (Component)null;
         }
 
-        public static TypeComponent GetChildOrGrandchild<TypeComponent>(this Component m, string name) where TypeComponent : Object {
+        public static TypeComponent GetChildOrGrandchild<TypeComponent>(this Component m, string name) where TypeComponent : Component {
             Transform res = GetChildOrGrandchild(m, name);
             return res != (Transform)null ? res.GetComponent<TypeComponent>() : (TypeComponent)null;
         }
@@ -155,7 +155,7 @@ namespace UnityEngine {
             return transform != null ? transform.GetComponent(componet) : (Component)null;
         }
 
-        public static TypeComponent RootParent<TypeComponent>(this Component c) where TypeComponent : Object {
+        public static TypeComponent RootParent<TypeComponent>(this Component c) where TypeComponent : Component {
             Transform transform = RootParent(c);
             return transform != null ? transform.GetComponent<TypeComponent>() : (TypeComponent)null;
         }

@@ -6,18 +6,18 @@ namespace UnityEngine {
         public static void Destroy(this GameObject V) 
             => Object.Destroy(V);
 
-        public static void Destroy<T>(this GameObject V) where T : Object
+        public static void Destroy<T>(this GameObject V) where T : Component
             => Object.Destroy(V.GetComponent<T>());
 
         public static void Destroy(this GameObject V, params Object[] objects) {
-            for (int I = 0; I < objects.Length; I++) 
-                Object.Destroy(objects[I]);
+            foreach (Object v in objects) 
+                Object.Destroy(v);
         }
 
         public static void DestroyImmediate(this GameObject V) 
             => Object.DestroyImmediate(V);
 
-        public static void DestroyImmediate<T>(this GameObject V) where T : Object
+        public static void DestroyImmediate<T>(this GameObject V) where T : Component
             => Object.DestroyImmediate(V.GetComponent<T>());
         //==========================GetPosition====================================================
         public static Vector3 GetPosition(this GameObject V)

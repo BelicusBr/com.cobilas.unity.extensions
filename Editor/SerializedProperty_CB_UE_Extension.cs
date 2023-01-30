@@ -9,8 +9,7 @@ namespace UnityEditor {
             => fieldInfo = GetFieldInfoObjectRef(P.propertyPath.Replace(".Array.data[", ".<Array>["), P.serializedObject.targetObject);
 
         public static object GetValue(this SerializedProperty P) {
-            KeyValuePair<FieldInfo, object> Res;
-            GetFieldInfo(P, out Res);
+            GetFieldInfo(P, out KeyValuePair<FieldInfo, object> Res);
             return Res.Key.GetValue(Res.Value);
         }
 
@@ -18,8 +17,7 @@ namespace UnityEditor {
             => (T)GetValue(P);
 
         public static void SetValue(this SerializedProperty P, object value) {
-            KeyValuePair<FieldInfo, object> Res;
-            GetFieldInfo(P, out Res);
+            GetFieldInfo(P, out KeyValuePair<FieldInfo, object> Res);
             Res.Key.SetValue(Res.Value, value);
         }
 

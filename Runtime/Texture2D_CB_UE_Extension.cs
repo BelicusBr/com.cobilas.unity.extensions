@@ -15,9 +15,10 @@ namespace UnityEngine {
         public static Texture2D PaintTexture(this Texture2D t, Color color) {
             Texture2D texture = Copy(t);
             Color[] pixels = texture.GetPixels();
-            for (int I = 0; I < ArrayManipulation.ArrayLength(pixels); I++)
-                pixels[I] = pixels[I] * color;
-            texture.SetPixels(pixels);
+            Color32[] color32s = new Color32[ArrayManipulation.ArrayLength(pixels)];
+            for (int I = 0; I < color32s.Length; I++)
+                color32s[I] = pixels[I] * color;
+            texture.SetPixels32(color32s);
             return texture;
         }
 

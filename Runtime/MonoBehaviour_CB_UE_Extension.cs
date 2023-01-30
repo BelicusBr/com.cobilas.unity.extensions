@@ -93,10 +93,10 @@
         public static void DestroyMyComponent(this MonoBehaviour m, float t)
             => Object.Destroy(m, t);
 
-        public static void Destroy<T>(this MonoBehaviour m) where T : Object
+        public static void Destroy<T>(this MonoBehaviour m) where T : Component
             => Object.Destroy(m.GetComponent<T>());
 
-        public static void Destroy<T>(this MonoBehaviour m, float t) where T : Object
+        public static void Destroy<T>(this MonoBehaviour m, float t) where T : Component
             => Object.Destroy(m.GetComponent<T>(), t);
 
         public static void DontDestroyOnLoad(this MonoBehaviour m)

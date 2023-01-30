@@ -1,4 +1,9 @@
 # Changelog
+## [1.0.19] - 30/01/2023
+### Changed
+- Na classe `SerializedProperty_CB_UE_Extension` nos métodos `GetValue` e `SetValue` o campos `KeyValuePair<FieldInfo, object> Res` foi imbutido na função `GetFieldInfo`.
+- Nas classes `Component_CB_UE_Extensions`, `GameObject_CB_UE_Extensions` e `MonoBehaviour_CB_UE_Extension` a restrição `where T : Object` foi alterada para `where T : Component`.
+- No método `Texture2D:Texture2D_CB_UE_Extension.PaintTexture(this Texture2D, Color)` a instrução `texture.SetPixels` foi alterada para `texture.SetPixels32` por questões de desempenho.
 ## [1.0.17] 11/11/2022
 ### Add método clamp
 O método `Clamp` foi adicionado nas classes
