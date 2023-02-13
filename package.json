@@ -7,7 +7,7 @@
   "changelogUrl": "https://github.com/BelicusBr/com.cobilas.unity.extensions/blob/main/CHANGELOG.md",
   "unity": "2019.1",
   "unityRelease": "0b5",
-  "type": "cb-extensions",
+  "type": "library",
   "author": "Cobilas CTB",
   "repository": {
     "url": "git+https://github.com/BelicusBr/com.cobilas.unity.extensions.git",
