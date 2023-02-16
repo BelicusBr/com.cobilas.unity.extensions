@@ -26,7 +26,9 @@
   },
   "keywords": [
     "unity3d",
-    "extensions"
+    "extensions",
+    "C#",
+    "CSharp"
   ],
   "license": "MIT"
 }
