@@ -1,6 +1,6 @@
 {
   "name": "com.cobilas.unity.extensions",
-  "version": "1.0.19",
+  "version": "1.20.0",
   "displayName": "Cobilas Extensions",
   "description": "Pacote de extenscoes para unity3d",
   "licensesUrl": "https://github.com/BelicusBr/com.cobilas.unity.extensions/blob/main/LICENSE.md",
@@ -14,7 +14,7 @@
     "type": "git"
   },
   "dependencies": {
-    "com.cobilas.core": "^1.0.3"
+    "com.cobilas.core": "^2.0.0"
   },
   "bugs": {
     "url": "https://github.com/BelicusBr/com.cobilas.unity.extensions/issues"
