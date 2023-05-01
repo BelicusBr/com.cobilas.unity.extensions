@@ -1,8 +1,9 @@
 {
-    "name": "Cobilas.Unity.Editor.Extensions",
+    "name": "Cobilas.Unity.Test.Editor.Extensions",
     "references": [
         "Cobilas.Core",
-        "Cobilas.Unity.Extensions"
+        "Cobilas.Unity.Test.Extensions",
+        "Cobilas.Unity.Editor.Extensions"
     ],
     "includePlatforms": [
         "Editor"
@@ -15,12 +16,6 @@
     "defineConstraints": [
         "UNITY_EDITOR"
     ],
-    "versionDefines": [
-        {
-            "name": "com.cobilas.cobilascore",
-            "expression": "1.0",
-            "define": "COBILAS_CORE"
-        }
-    ],
+    "versionDefines": [],
     "noEngineReferences": false
 }

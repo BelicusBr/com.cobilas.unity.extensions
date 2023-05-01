@@ -2,7 +2,7 @@
 using Cobilas.Collections;
 
 namespace UnityEngine {
-    public static class Component_CB_UE_Extensions {
+    public static class CBUE_ComponentExtensions {
 
         public static int PickUpChildCount(this Component m)
             => m.transform.childCount;

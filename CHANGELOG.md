@@ -1,4 +1,29 @@
 # Changelog
+## [1.21.1] - 01/05/2023
+### Fixed
+- Nos métodos `Vector3:CBUE_Vector3Extension.Division(this Vector3, Vector3)` e `Vector3Int:CBUE_Vector3IntExtension.Division(this Vector3Int, Vector3Int)`
+o campo `A.z` erá divido por `B.y`.
+### Added
+- Os métodos foram adicionados.
+```c#
+	void:CBUE_GameObjectExtensions.Destroy(this GameObject, Object);
+	Vector4:CBUE_Vector4Extension.ABS(this Vector4, [bool:true], [bool:true], [bool:true], [bool:true]);
+	Vector4:CBUE_Vector4Extension.ABSX(this Vector4);
+	Vector4:CBUE_Vector4Extension.ABSY(this Vector4);
+	Vector4:CBUE_Vector4Extension.ABSZ(this Vector4);
+	Vector4:CBUE_Vector4Extension.ABSW(this Vector4);
+	Vector4:CBUE_Vector4Extension.Invert(this Vector4, [bool:true], [bool:true], [bool:true], [bool:true]);
+	Vector4:CBUE_Vector4Extension.InvertX(this Vector4);
+	Vector4:CBUE_Vector4Extension.InvertY(this Vector4);
+	Vector4:CBUE_Vector4Extension.InvertZ(this Vector4);
+	Vector4:CBUE_Vector4Extension.InvertW(this Vector4);
+	Vector4:CBUE_Vector4Extension.Division(this Vector4, Vector4);
+	Vector4:CBUE_Vector4Extension.Division(this Vector4, float, float, float, float);
+	Vector4:CBUE_Vector4Extension.Multiplication(this Vector4, Vector4);
+	Vector4:CBUE_Vector4Extension.Multiplication(this Vector4, float, float, float, float);
+	Vector4:CBUE_Vector4Extension.RemoveNaN(this Vector4);
+	Vector4:CBUE_Vector4Extension.RemoveInfinity(this Vector4);
+```
 ## [1.0.19] - 30/01/2023
 ### Changed
 - Na classe `SerializedProperty_CB_UE_Extension` nos métodos `GetValue` e `SetValue` o campos `KeyValuePair<FieldInfo, object> Res` foi imbutido na função `GetFieldInfo`.

@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Collections.Generic;
 
 namespace UnityEditor {
-    public static class SerializedProperty_CB_UE_Extension {
+    public static class CBUE_SerializedPropertyExtension {
         public static void GetFieldInfo(this SerializedProperty P, out KeyValuePair<FieldInfo, object> fieldInfo)
             => fieldInfo = GetFieldInfoObjectRef(P.propertyPath.Replace(".Array.data[", ".<Array>["), P.serializedObject.targetObject);
 

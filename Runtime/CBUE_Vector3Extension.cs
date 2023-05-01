@@ -1,5 +1,5 @@
 ﻿namespace UnityEngine {
-    public static class Vector3_CB_UE_Extension {
+    public static class CBUE_Vector3Extension {
         public static Vector3 ABS(this Vector3 v, bool absX = true, bool absY = true, bool absZ = true)
             => new Vector3(
                 absX ? Mathf.Abs(v.x) : v.x, 
@@ -31,7 +31,7 @@
             => Invert(v, invertX:false, invertY:false);
 
         public static Vector3 Division(this Vector3 A, Vector3 B)
-            => new Vector3(A.x / B.x, A.y / B.y, A.z / B.y);
+            => new Vector3(A.x / B.x, A.y / B.y, A.z / B.z);
 
         public static Vector3 Division(this Vector3 A, float bX, float bY, float bZ)
             => Division(A, new Vector3(bX, bY, bZ));

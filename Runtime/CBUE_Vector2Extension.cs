@@ -1,5 +1,5 @@
 ﻿namespace UnityEngine {
-    public static class Vector2_CB_UE_Extension {
+    public static class CBUE_Vector2Extension {
         public static Vector2 ABS(this Vector2 v, bool absX = true, bool absY = true)
             => new Vector2(absX ? Mathf.Abs(v.x) : v.x, absY ? Mathf.Abs(v.y) : v.y);
 
