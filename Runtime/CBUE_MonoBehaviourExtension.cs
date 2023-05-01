@@ -1,5 +1,5 @@
 ﻿namespace UnityEngine {
-    public static class MonoBehaviour_CB_UE_Extension {
+    public static class CBUE_MonoBehaviourExtension {
         #region Position
         public static void SetPosition(this MonoBehaviour m, float x, float y, float z) 
             => SetPosition(m, new Vector3(x, y, z));

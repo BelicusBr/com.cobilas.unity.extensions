@@ -2,16 +2,19 @@
 using Cobilas.Collections;
 
 namespace UnityEngine {
-    public static class GameObject_CB_UE_Extensions {
+    public static class CBUE_GameObjectExtensions {
         public static void Destroy(this GameObject V) 
             => Object.Destroy(V);
 
         public static void Destroy<T>(this GameObject V) where T : Component
             => Object.Destroy(V.GetComponent<T>());
 
+        public static void Destroy(this GameObject V, Object target)
+            => Object.Destroy(target);
+
         public static void Destroy(this GameObject V, params Object[] objects) {
             foreach (Object v in objects) 
-                Object.Destroy(v);
+                Destroy(V, v);
         }
 
         public static void DestroyImmediate(this GameObject V) 

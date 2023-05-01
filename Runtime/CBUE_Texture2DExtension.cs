@@ -1,7 +1,7 @@
 ﻿using Cobilas.Collections;
 
 namespace UnityEngine {
-    public static class Texture2D_CB_UE_Extension {
+    public static class CBUE_Texture2DExtension {
 
         public static Texture2D Copy(this Texture2D t, bool linear) {
             Texture2D copy = new Texture2D(t.width, t.height, t.format, t.mipmapCount, linear);
