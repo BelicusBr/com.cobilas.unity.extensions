@@ -1,4 +1,10 @@
 # Changelog
+## [1.22.0] - 29/08/2023
+## Changed
+- As dependencias do pacote foram aluteradas.
+## [1.21.1-ch1] - 28/08/2023
+### Changed
+- O autor do pacote foi alterado de `Cobilas CTB` para `BélicusBr`.
 ## [1.21.1] - 01/05/2023
 ### Fixed
 - Nos métodos `Vector3:CBUE_Vector3Extension.Division(this Vector3, Vector3)` e `Vector3Int:CBUE_Vector3IntExtension.Division(this Vector3Int, Vector3Int)`

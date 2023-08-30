@@ -1,6 +1,6 @@
 {
   "name": "com.cobilas.unity.extensions",
-  "version": "1.21.1",
+  "version": "1.22.0",
   "displayName": "Cobilas Extensions",
   "description": "Pacote de extenscoes para unity3d",
   "licensesUrl": "https://github.com/BelicusBr/com.cobilas.unity.extensions/blob/main/LICENSE.md",
@@ -8,13 +8,13 @@
   "unity": "2019.1",
   "unityRelease": "0b5",
   "type": "library",
-  "author": "Cobilas CTB",
+  "author": "B\u00e9licusBr",
   "repository": {
     "url": "git+https://github.com/BelicusBr/com.cobilas.unity.extensions.git",
     "type": "git"
   },
   "dependencies": {
-    "com.cobilas.core": "^2.0.0"
+    "com.cobilas.core": "3.0.0"
   },
   "bugs": {
     "url": "https://github.com/BelicusBr/com.cobilas.unity.extensions/issues"
@@ -26,9 +26,9 @@
   },
   "keywords": [
     "unity3d",
-    "extensions",
-    "C#",
-    "CSharp"
+    "unity-csharp",
+    "unitypackage",
+    "unity-extensions"
   ],
   "license": "MIT"
 }
