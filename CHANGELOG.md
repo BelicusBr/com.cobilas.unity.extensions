@@ -1,4 +1,6 @@
 # Changelog
+## [1.22.0] - 02/09/2023
+⛔ DEPRECATED O pacote `com.cobilas.unity.extensions` foi incorporado no pacote `com.cobilas.unity.utility`.
 ## [1.22.0] - 29/08/2023
 ## Changed
 - As dependencias do pacote foram aluteradas.
